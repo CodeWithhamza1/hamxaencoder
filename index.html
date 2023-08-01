@@ -44,6 +44,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
+         <button class="btn btn-danger" onclick="resetFields()">Reset All</button>
     </div>
 
     <!-- Add Bootstrap 5 JS and Popper.js (required for some Bootstrap components) -->
@@ -118,6 +119,17 @@
                 field.classList.remove('focused');
             });
         });
+
+        function resetFields() {
+            document.getElementById('message').value = '';
+            document.getElementById('encodedMessage').value = '';
+            document.getElementById('decodedMessage').value = '';
+
+            // Show success feedback
+            const messageValidation = document.getElementById('messageValidation');
+            messageValidation.classList.remove('text-danger', 'text-success');
+            messageValidation.innerText = '';
+        }
     </script>
 </body>
 </html>
