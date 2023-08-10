@@ -7,6 +7,10 @@
     <!-- Add Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        body{
+        background-color: #2d3436;
+        background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+        }
         textarea{
         resize: none;
         }
@@ -15,26 +19,26 @@
 <body>
 
     <div class="container glass-effect p-4 rounded">
-        <h1 class="text-center mb-4">Message Encoder/Decoder</h1>
+        <h1 class="text-center mb-4 text-white">Message Encoder/Decoder</h1>
         <div class="mb-3">
-            <label for="message">Enter your message:</label>
-            <textarea id="message" class="form-control" rows="3" placeholder="Type your message here" oninput="updateEncodedMessage()"></textarea>
+            <label for="message" class="text-white">Enter your message:</label>
+            <textarea id="message" class="form-control bg-dark border border-danger text-warning" rows="3" placeholder="Type your message here" oninput="updateEncodedMessage()"></textarea>
         </div>
         <div class="input-group mb-3">
-            <label for="encodedMessage" class="input-group-text">Encoded Message:</label>
-            <input type="text" id="encodedMessage" class="form-control">
+            <label for="encodedMessage" class="input-group-text bg-dark text-white border border-info">Encoded Message:</label>
+            <input type="text" id="encodedMessage" class="form-control bg-dark border border-info text-white">
             <div class="input-group-append">
-                <button class="btn btn-primary" onclick="copyEncodedMessage()">
+                <button class="btn btn-danger" onclick="copyEncodedMessage()">
                     <i class="fas fa-copy"></i>
                 </button>
             </div>
         </div>
-        <button class="btn btn-primary mb-3" onclick="decodeMessage()">Decode</button>
+        <button class="btn btn-success mb-3" onclick="decodeMessage()">Decode</button>
         <div>
-            <label for="decodedMessage">Decoded Message:</label>
-            <textarea id="decodedMessage" class="form-control" rows="4" readonly></textarea>
+            <label for="decodedMessage" class="text-white">Decoded Message:</label>
+            <textarea id="decodedMessage" class="form-control bg-dark border border-warning text-danger" rows="4" readonly></textarea>
         </div>
-        <button class="btn btn-danger mt-4" onclick="resetFields()">Reset All</button>
+        <button class="btn btn-info mt-4" onclick="resetFields()">Reset All</button>
     </div>
 
     <!-- Bootstrap Toast -->
