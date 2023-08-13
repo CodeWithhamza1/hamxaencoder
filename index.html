@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Message Encoder/Decoder</title>
     <!-- Add Bootstrap 5 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -8,35 +10,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body{
-        background-color: #2d3436;
-        background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+        background-image: url("bg.jpg");
         }
         textarea{
         resize: none;
+        }
+        .bg-suss{
+            backdrop-filter: blur( 7.5px );
+            -webkit-backdrop-filter: blur( 7.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+        }
+        .hw{
+            height: 300px!important;
+        }
+        .hh{
+            width: 900px!important;
+            justify-content: center!important;
+            align-items: center;
+        }
+        @media only screen and (max-width: 767px) {
+            .hello{
+                margin-top: 14px!important;
+                margin-bottom: -10px;
+            }
+        }
+        .plcwh::placeholder{
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <div class="container glass-effect p-4 rounded mt-5">
-        <div class="mb-3">
-            <textarea id="message" class="form-control bg-dark border border-danger text-warning" rows="3" placeholder="Type your message here" oninput="updateEncodedMessage()"></textarea>
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" id="encodedMessage" class="form-control bg-dark border border-info text-white">
-            <div class="input-group-append">
-                <button class="btn btn-danger" onclick="copyEncodedMessage()">
-                    <i class="fas fa-copy"></i>
-                </button>
+    <div class="container glass-effect p-4 rounded mt-5 bg-suss border border-success">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <textarea id="message" class="form-control border border-danger text-warning bg-transparent hw plcwh" rows="5" placeholder="Type Message..." oninput="updateEncodedMessage()" style="text-align: left;"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" id="encodedMessage" placeholder="Enter Code..." class="form-control border border-info text-white bg-transparent plcwh">
+                    <div class="input-group-append">
+                        <button class="btn btn-danger" onclick="copyEncodedMessage()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <textarea id="decodedMessage" class="form-control border border-warning text-info bg-transparent hw plcwh" rows="5" readonly style="text-align: right;" placeholder="Decoded Message..."></textarea>
+                </div>
             </div>
         </div>
-        <button class="btn btn-success mb-3" onclick="decodeMessage()">Decode</button>
-        <div>
-            <textarea id="decodedMessage" class="form-control bg-dark border border-warning text-danger" rows="4" readonly></textarea>
+        <div class="row">
+            <div class="col-md-6 hello">
+                <button class="btn btn-success" onclick="decodeMessage()">Decode</button>
+                <button class="btn btn-info" onclick="resetFields()">Reset All</button>
+            </div>
         </div>
-        <button class="btn btn-info mt-4" onclick="resetFields()">Reset All</button>
     </div>
-
+    
     <!-- Bootstrap Toast -->
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
         <div id="copyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -44,9 +78,15 @@
                 <strong class="me-auto text-white">Copied the encoded code</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            
         </div>
     </div>
+
+    <div class="container bg-warning ">
+        <footer class="py-3 mt-4">
+          <p class="text-center text-muted mt-3">© <script>document.write(new Date().getFullYear());</script> All right reserved <b>Hackers Inc.</b></p>
+        </footer>
+      </div>
+    
 
     <!-- Add Bootstrap 5 JS and Popper.js (required for some Bootstrap components) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
